@@ -26,7 +26,7 @@ pnpm-debug.log*
 
 ### Hugo ###
 # Generated files by hugo
-/public/data
+/public/content
 /resources/_gen/
 hugo_stats.json
 
