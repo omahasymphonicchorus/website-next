@@ -1,0 +1,7 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Omaha Symphonic Chorus"
+disableKinds = ["RSS", "sitemap"]
+
+[outputs]
+  home = ["JSON"]
