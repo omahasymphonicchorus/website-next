@@ -1,0 +1,20 @@
+{{ with .Site.GetPage "about" -}}
+  {
+    "title": "{{ .Title }}",
+    "description": "{{ .Description }}",
+    "content": "{{ (replace (trim .Content "\n") "\n" "\\n") | safeHTML }}",
+    "quote": "{{ .Params.quote }}",
+    "quote_credit": "{{ .Params.quoteCredit }}",
+    "images": {
+      "top_left": "{{ (.Resources.GetMatch "about-top-left" ).RelPermalink }}",
+      "left": "{{ (.Resources.GetMatch "about-left").RelPermalink }}",
+      "top_right": "{{ (.Resources.GetMatch "about-top-right" ).RelPermalink }}"
+    },
+    {{ with .GetPage "history" -}}
+    "history": {
+      "title": "{{ .Title }}",
+      "content": "{{ (replace (trim .Content "\n") "\n" "\\n") | safeHTML }}"
+    }
+    {{- end }}
+  }
+{{- end }}

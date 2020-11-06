@@ -7,9 +7,7 @@
     menu-classes="ml-auto"
   >
     <template>
-      <a v-popover:popover1 class="navbar-brand" href="#">
-        Omaha Symphonic Chorus
-      </a>
+      <a v-popover:popover1 class="navbar-brand" href="#"> {{ title }} </a>
     </template>
     <template slot="navbar-menu">
       <li class="nav-item">
@@ -107,7 +105,8 @@ import { Popover } from "element-ui";
 export default {
   props: {
     transparent: Boolean,
-    colorOnScroll: Number
+    colorOnScroll: Number,
+    title: String
   },
   components: {
     Navbar,

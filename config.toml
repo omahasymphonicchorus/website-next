@@ -1,7 +1,25 @@
-baseURL = "/"
 languageCode = "en-us"
+languageLang = "en"
 title = "Omaha Symphonic Chorus"
-disableKinds = ["RSS", "sitemap"]
+
+# RSS, categories and tags disabled for an easy start
+# See configuration options for more details: 
+# https://gohugo.io/getting-started/configuration/#toml-configuration
+disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+
+[params]
+    mapsKey = "AIzaSyABFKIvLgiTzbuwBymZINW5jj1zq23_R5E"
+    recaptchaKey = "6LdH4HIUAAAAAFZ00mElSOG_9IuLWKBnrPQY3Gfp"
+    squareApplicationID = "sq0idp-Dci8dLeU0ozmVGlnwq2RVA"
+    squareLocationID = "6J17D3TNR87DJ"
+    backendURL = "https://sls.omahasymphonicchorus.org"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [outputs]
   home = ["JSON"]
+  page = ["JSON"]
+  section = ["JSON"]

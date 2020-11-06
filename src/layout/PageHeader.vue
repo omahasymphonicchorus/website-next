@@ -3,31 +3,28 @@
     <parallax
       class="page-header-image"
       :style="{
-        'background-image': 'url(' + header + ')'
+        'background-image': 'url(/content' + content.backsplash + ')'
       }"
     ></parallax>
     <div class="container">
       <div class="content-center brand">
-        <h1 class="h1-seo">Omaha Symphonic Chorus</h1>
-        <h3>Advancing choral artistry in the Omaha community</h3>
+        <h1 class="h1-seo">{{ content.title }}</h1>
+        <h3>{{ content.tagline }}</h3>
       </div>
       <h6 class="category-absolute">
-        <span class="text-white">Dr. Greg Zielke</span>, Artistic Director and
-        Conductor
+        <span class="text-white">{{ content.director }} </span>,
+        {{ content.director_title }}
       </h6>
     </div>
   </header>
 </template>
 
 <script>
-import header from "./header.jpg";
 import { Parallax } from "@/components";
 
 export default {
-  data() {
-    return {
-      header
-    };
+  props: {
+    content: Object
   },
   components: {
     Parallax
