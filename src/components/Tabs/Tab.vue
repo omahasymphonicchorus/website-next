@@ -1,11 +1,8 @@
 <template>
-  <div
-    class="tab-pane"
-    v-show="active"
-    :id="id || label"
-    :class="{ active: active }"
-    :aria-expanded="active"
-  >
+  <div class="tab-pane"
+       v-show="active"
+       :id="id || title"
+       :class="{active: active}">
     <slot></slot>
   </div>
 </template>
@@ -13,9 +10,16 @@
 export default {
   name: "tab-pane",
   props: {
-    label: String,
-    id: String,
-    disabled: Boolean
+    title: {
+      type: String,
+      default: "",
+      description: "Tab pane title"
+    },
+    id: {
+      type: String,
+      default: null,
+      description: "Tab pane id"
+    }
   },
   inject: ["addTab", "removeTab"],
   data() {
@@ -34,4 +38,5 @@ export default {
   }
 };
 </script>
-<style></style>
+<style>
+</style>

@@ -1,16 +1,14 @@
 {
-  "header": {
-    "title": "{{ .Site.Title }}",
-    "tagline": "{{ .Params.tagline }}",
-    "director": "{{ .Params.director }}",
-    "director_title": "{{ .Params.directorTitle }}",
-    "announcement": {
-      "content": "{{ .Params.announcement }}",
-      "expires": "{{ .Params.announcementExpires }}",
-      "link": "{{ .Params.announcementLink }}"
-    },
-    "backsplash": "{{ (.Resources.GetMatch "above-fold-backsplash" ).RelPermalink }}"
-  },
-  "about": {{ partial "about.json" . -}},
-  "bios": {{ partial "bios.json" . -}}
+    "header": {
+        "title": "{{ .Site.Title }}",
+        "tagline": "{{ .Params.tagline }}",
+        "director": "{{ .Params.director }}",
+        "director_title": "{{ .Params.directorTitle }}",
+        "announcement": {
+        "content": "{{ .Params.announcement }}",
+        "expires": "{{ .Params.announcementExpires }}",
+        "link": "{{ .Params.announcementLink }}"
+        },
+        "backsplash": "{{ (.Resources.GetMatch "above-fold-backsplash" ).RelPermalink }}"
+    }
 }

@@ -2,14 +2,15 @@
   <div id="app">
     <transition name="fade">
       <div v-if="content">
-        <Navbar :title="content.header.title"></Navbar>
-        <div class="wrapper">
+        <header class="header-global">
+          <Navbar :title="content.header.title"></Navbar>
+        </header>
+        <!--<div class="wrapper">
           <PageHeader :content="content.header"></PageHeader>
           <main class="main landing-page">
             <About :content="content.about"></About>
             <Bios :content="content.bios"></Bios>
-          </main>
-        </div>
+          </main>-->
       </div>
     </transition>
   </div>
@@ -17,9 +18,9 @@
 
 <script>
 import Navbar from "./layout/Navbar";
-import PageHeader from "./layout/PageHeader";
-import About from "./layout/Main/About";
-import Bios from "./layout/Main/Bios";
+//import PageHeader from "./layout/PageHeader";
+//import About from "./layout/Main/About";
+//import Bios from "./layout/Main/Bios";
 
 export default {
   data() {
@@ -31,10 +32,10 @@ export default {
     this.content = await (await fetch(`/content/index.json`)).json();
   },
   components: {
-    Navbar,
-    PageHeader,
-    About,
-    Bios
+    Navbar
+    //PageHeader,
+    //About,
+    //Bios
   }
 };
 </script>

@@ -1,0 +1,14 @@
+{
+    "header": {
+        "title": "Omaha Symphonic Chorus",
+        "tagline": "Advancing choral artistry in the Omaha community",
+        "director": "Dr. Greg Zielke",
+        "director_title": "Artistic Director and Conductor",
+        "announcement": {
+        "content": "Omaha Symphonic Chorus releases a virtual choir performance of Sing Me to Heaven, by Daniel Gawthrop.",
+        "expires": "2020-12-31 00:00:00 -0500 -0500",
+        "link": "#2019-20-season"
+        },
+        "backsplash": "/choir.jpg"
+    }
+}

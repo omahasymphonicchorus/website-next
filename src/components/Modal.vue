@@ -14,35 +14,43 @@
       :aria-hidden="!show"
     >
       <div
-        class="modal-dialog"
+        class="modal-dialog modal-dialog-centered"
         :class="[{ 'modal-notice': type === 'notice' }, modalClasses]"
       >
-        <div class="modal-content">
-          <slot name="base-content">
-            <div class="modal-header" :class="headerClasses">
-              <slot name="close-button">
-                <button
-                  type="button"
-                  v-if="showClose"
-                  @click="closeModal"
-                  class="close"
-                  data-dismiss="modal"
-                  :aria-hidden="!show"
-                >
-                  <i class="now-ui-icons ui-1_simple-remove"></i>
-                </button>
-              </slot>
-              <slot name="header"></slot>
-            </div>
+        <div
+          class="modal-content"
+          :class="[
+            gradient ? `bg-gradient-${gradient}` : '',
+            modalContentClasses
+          ]"
+        >
+          <div
+            class="modal-header"
+            :class="[headerClasses]"
+            v-if="$slots.header"
+          >
+            <slot name="header"></slot>
+            <slot name="close-button">
+              <button
+                type="button"
+                class="close"
+                v-if="showClose"
+                @click="closeModal"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span :aria-hidden="!show">×</span>
+              </button>
+            </slot>
+          </div>
 
-            <div class="modal-body" :class="bodyClasses">
-              <slot></slot>
-            </div>
+          <div class="modal-body" :class="bodyClasses">
+            <slot></slot>
+          </div>
 
-            <div class="modal-footer" :class="footerClasses">
-              <slot name="footer"></slot>
-            </div>
-          </slot>
+          <div class="modal-footer" :class="footerClasses" v-if="$slots.footer">
+            <slot name="footer"></slot>
+          </div>
         </div>
       </div>
     </div>
@@ -68,15 +76,37 @@ export default {
       validator(value) {
         let acceptedValues = ["", "notice", "mini"];
         return acceptedValues.indexOf(value) !== -1;
-      }
+      },
+      description: 'Modal type (notice|mini|"") '
     },
-    modalClasses: [Object, String],
-    headerClasses: [Object, String],
-    bodyClasses: [Object, String],
-    footerClasses: [Object, String],
+    modalClasses: {
+      type: [Object, String],
+      description: "Modal dialog css classes"
+    },
+    modalContentClasses: {
+      type: [Object, String],
+      description: "Modal dialog content css classes"
+    },
+    gradient: {
+      type: String,
+      description: "Modal gradient type (danger, primary etc)"
+    },
+    headerClasses: {
+      type: [Object, String],
+      description: "Modal Header css classes"
+    },
+    bodyClasses: {
+      type: [Object, String],
+      description: "Modal Body css classes"
+    },
+    footerClasses: {
+      type: [Object, String],
+      description: "Modal Footer css classes"
+    },
     animationDuration: {
       type: Number,
-      default: 500
+      default: 500,
+      description: "Modal transition duration"
     }
   },
   methods: {

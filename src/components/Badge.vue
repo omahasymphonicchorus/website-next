@@ -1,11 +1,16 @@
 <template>
   <component
-    :is="componentTag"
+    :is="tag"
     class="badge"
-    :class="`badge-${type}`"
-    :href="href"
+    :class="[
+      `badge-${type}`,
+      rounded ? `badge-pill` : '',
+      circle && 'badge-circle'
+    ]"
   >
-    <slot></slot>
+    <slot>
+      <i v-if="icon" :class="icon"></i>
+    </slot>
   </component>
 </template>
 <script>
@@ -14,29 +19,28 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "span"
+      default: "span",
+      description: "Html tag to use for the badge."
     },
-    href: String,
+    rounded: {
+      type: Boolean,
+      default: false,
+      description: "Whether badge is of pill type"
+    },
+    circle: {
+      type: Boolean,
+      default: false,
+      description: "Whether badge is circle"
+    },
+    icon: {
+      type: String,
+      default: "",
+      description: "Icon name. Will be overwritten by slot if slot is used"
+    },
     type: {
       type: String,
       default: "default",
-      validator: value => {
-        let acceptedValues = [
-          "primary",
-          "info",
-          "success",
-          "warning",
-          "danger",
-          "default",
-          "neutral"
-        ];
-        return acceptedValues.indexOf(value) !== -1;
-      }
-    }
-  },
-  computed: {
-    componentTag() {
-      return this.href ? "a" : this.tag;
+      description: "Badge type (primary|info|danger|default|warning|success)"
     }
   }
 };
